@@ -1,4 +1,4 @@
-import Graph from './Graph'
+import Graph from './Graph.mjs'
 
 const grafo1 = new Graph()
 const grafo2 = new Graph()
