@@ -122,6 +122,26 @@ export default class BinarySearchTree {
         }
     }
 
+    /* Método que implementa a busca primeiro em largura
+       (BFS - Breadth-First Search)
+    */
+    bfsTraversal(fnCallback, root = this.#root) {
+        // Cria um vetor contendo inicialmente o nodo raiz
+        let current = [root]
+
+        // Enquanto houver nodos no vetor current
+        while(current.length > 0) {
+            const next = []     // Próximos nodos a serem processados
+            for(let node of current) {
+                fnCallback(node.data)   // Chama o callback
+                if(node.left) next.push(node.left)      // Enfileira o nodo à esquerda
+                if(node.right) next.push(node.right)    // Enfileira o nodo à direita
+            }
+            // Coloca os novos nodos identificados na fila principal
+            current = next
+        }
+    }
+
     /**************************************************************/
 
     /* Método que retorna o nodo de menor valor da árvore */
